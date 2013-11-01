@@ -10,4 +10,6 @@
 
 @interface ZMBViewController : UIViewController
 
+@property (nonatomic, strong) IBOutletCollection(UIView) NSArray *bubbleViews;
+
 @end
