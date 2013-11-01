@@ -18,6 +18,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    UIView *newView = [[UIView alloc]initWithFrame:CGRectMake(20, 20, 40, 40)];
+    newView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:newView];
+    newView.layer.cornerRadius = 20.f;
+    newView.clipsToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning
