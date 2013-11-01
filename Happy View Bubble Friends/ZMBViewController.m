@@ -22,7 +22,20 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+    
+    _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    
+    UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:self.bubbleViews];
+    
+    [_animator addBehavior: gravityBehavior];
+    
+    UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems: self.bubbleViews];
+    collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+    [_animator addBehavior: collisionBehavior];
+}
 
 - (void)didReceiveMemoryWarning
 {
