@@ -21,6 +21,7 @@
 		8A73563618241AE500AFC224 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A73561818241AE500AFC224 /* UIKit.framework */; };
 		8A73563E18241AE500AFC224 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A73563C18241AE500AFC224 /* InfoPlist.strings */; };
 		8A73564018241AE500AFC224 /* Happy_View_Bubble_FriendsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A73563F18241AE500AFC224 /* Happy_View_Bubble_FriendsTests.m */; };
+		8AB786E518245D9D00894881 /* UIView+Rounded.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB786E418245D9D00894881 /* UIView+Rounded.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		8A73563B18241AE500AFC224 /* Happy View Bubble FriendsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Happy View Bubble FriendsTests-Info.plist"; sourceTree = "<group>"; };
 		8A73563D18241AE500AFC224 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8A73563F18241AE500AFC224 /* Happy_View_Bubble_FriendsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Happy_View_Bubble_FriendsTests.m; sourceTree = "<group>"; };
+		8AB786E318245D9D00894881 /* UIView+Rounded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Rounded.h"; sourceTree = "<group>"; };
+		8AB786E418245D9D00894881 /* UIView+Rounded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Rounded.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 		8A73560818241AE500AFC224 = {
 			isa = PBXGroup;
 			children = (
+				8AB786E318245D9D00894881 /* UIView+Rounded.h */,
+				8AB786E418245D9D00894881 /* UIView+Rounded.m */,
 				8A73561A18241AE500AFC224 /* Happy View Bubble Friends */,
 				8A73563918241AE500AFC224 /* Happy View Bubble FriendsTests */,
 				8A73561318241AE500AFC224 /* Frameworks */,
@@ -250,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB786E518245D9D00894881 /* UIView+Rounded.m in Sources */,
 				8A73562518241AE500AFC224 /* ZMBAppDelegate.m in Sources */,
 				8A73562118241AE500AFC224 /* main.m in Sources */,
 				8A73562B18241AE500AFC224 /* ZMBViewController.m in Sources */,
@@ -461,6 +467,7 @@
 				8A73564518241AE500AFC224 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A73564618241AE500AFC224 /* Build configuration list for PBXNativeTarget "Happy View Bubble FriendsTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +476,7 @@
 				8A73564818241AE500AFC224 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
