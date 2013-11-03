@@ -13,4 +13,6 @@
 //@property (nonatomic, strong) IBOutletCollection(UIView) NSArray *bubbleViews;
 @property (nonatomic, strong) NSArray *bubbleViews;
 
+@property (nonatomic,strong) UIView *stubbleView;
+
 @end
