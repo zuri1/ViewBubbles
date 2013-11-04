@@ -81,42 +81,42 @@
  
 
     
-//    for (UIView *bubbleView in _bubbleViews)
-//    {
-//        CABasicAnimation* boundsAnim = [CABasicAnimation animationWithKeyPath:@"bounds"];
-//        boundsAnim.fromValue = [NSValue valueWithCGRect:bubbleView.layer.bounds];
-//        boundsAnim.toValue = [NSValue valueWithCGRect:CGRectMake(20, 20, 30, 30)];
-//        boundsAnim.duration = 4.0;
-//        [bubbleView.layer addAnimation:boundsAnim forKey:@"bounds"];
-//        
-//        // Change the actual data value in the layer to the final value.
-//        bubbleView.layer.bounds = CGRectMake(20, 20, 30, 30);
-//    }
-//    
-//    
-//    _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-//    
-//    UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:self.bubbleViews];
-//    
-//    [_animator addBehavior: gravityBehavior];
-//    
-//    UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems: self.bubbleViews];
-//    collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
-//    [_animator addBehavior: collisionBehavior];
-//    
-//    for (UIView *bubbleView in _bubbleViews)
-//    {
-//        for (int i = 0; i < 5; i++)
-//        {
-//            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(i * 9 + 8, 30, 4, 4)];
-//            view.backgroundColor = [UIColor redColor];
-//            [bubbleView addSubview:view];
-//            view.layer.cornerRadius = 2.f;
-//            view.clipsToBounds = YES;
-//            [gravityBehavior addItem:view];
-//            //[collisionBehavior addItem:view];
-//        }
-//    }
+    for (UIView *bubbleView in _bubbleViews)
+    {
+        CABasicAnimation* boundsAnim = [CABasicAnimation animationWithKeyPath:@"bounds"];
+        boundsAnim.fromValue = [NSValue valueWithCGRect:bubbleView.layer.bounds];
+        boundsAnim.toValue = [NSValue valueWithCGRect:CGRectMake(20, 20, 30, 30)];
+        boundsAnim.duration = 4.0;
+        [bubbleView.layer addAnimation:boundsAnim forKey:@"bounds"];
+        
+        // Change the actual data value in the layer to the final value.
+        bubbleView.layer.bounds = CGRectMake(20, 20, 30, 30);
+    }
+    
+    
+    _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    
+    UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:self.bubbleViews];
+    
+    [_animator addBehavior: gravityBehavior];
+    
+    UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems: self.bubbleViews];
+    collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+    [_animator addBehavior: collisionBehavior];
+    
+    for (UIView *bubbleView in _bubbleViews)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(i * 9 + 8, 30, 4, 4)];
+            view.backgroundColor = [UIColor redColor];
+            [bubbleView addSubview:view];
+            view.layer.cornerRadius = 2.f;
+            view.clipsToBounds = YES;
+            [gravityBehavior addItem:view];
+            //[collisionBehavior addItem:view];
+        }
+    }
 
     
     
@@ -151,6 +151,7 @@
         // Change the actual data value in the layer to the final value.
         _bubbleView.layer.bounds = CGRectMake(20, 20, 0, 0);
         NSLog(@"Pop!");
+        self.view.backgroundColor = [UIColor redColor];
         //}
     }
 }
@@ -170,6 +171,7 @@
         // Change the actual data value in the layer to the final value.
         _bubbleView2.layer.bounds = CGRectMake(20, 20, 0, 0);
         NSLog(@"Pop2!");
+        self.view.backgroundColor = [UIColor blueColor];
         //}
     }
 }
@@ -189,6 +191,7 @@
         // Change the actual data value in the layer to the final value.
         _bubbleView3.layer.bounds = CGRectMake(20, 20, 0, 0);
         NSLog(@"Pop3!");
+        self.view.backgroundColor = [UIColor magentaColor];
         //}
     }
 }
@@ -208,6 +211,7 @@
         // Change the actual data value in the layer to the final value.
         _bubbleView4.layer.bounds = CGRectMake(20, 20, 0, 0);
         NSLog(@"Pop4!");
+        self.view.backgroundColor = [UIColor cyanColor];
         //}
     }
 }
@@ -227,6 +231,7 @@
         // Change the actual data value in the layer to the final value.
         _bubbleView5.layer.bounds = CGRectMake(20, 20, 0, 0);
         NSLog(@"Pop5!");
+        self.view.backgroundColor = [UIColor orangeColor];
         //}
     }
 }
