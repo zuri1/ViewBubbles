@@ -108,12 +108,12 @@
     {
         for (int i = 0; i < 5; i++)
         {
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(i * 9 + 8, 30, 4, 4)];
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(i * 3 + 27, 34, 3, 3)];
             view.backgroundColor = [UIColor redColor];
             [bubbleView addSubview:view];
-            view.layer.cornerRadius = 2.f;
+            view.layer.cornerRadius = 1.5f;
             view.clipsToBounds = YES;
-            [gravityBehavior addItem:view];
+            //[gravityBehavior addItem:view];
             //[collisionBehavior addItem:view];
         }
     }
