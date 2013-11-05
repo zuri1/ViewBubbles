@@ -21,64 +21,42 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    _bubbleView = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 60, 60)];
+    
+    _bubbleView2 = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 60, 60)];
+    
+    _bubbleView3 = [[UIView alloc] initWithFrame:CGRectMake(200, 200, 60, 60)];
+    
+    _bubbleView4 = [[UIView alloc] initWithFrame:CGRectMake(30, 200, 60, 60)];
+    
+    _bubbleView5 = [[UIView alloc] initWithFrame:CGRectMake(180, 300, 60, 60)];
+    
+    _bubbleViews = [NSArray arrayWithObjects:_bubbleView, _bubbleView2, _bubbleView3, _bubbleView4, _bubbleView5, nil];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear: animated];
     
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    for (UIView *bubbleView in _bubbleViews) {
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        
+        
+        bubbleView.backgroundColor = [UIColor purpleColor];
+        [self.view addSubview:bubbleView];
+        bubbleView.layer.cornerRadius = 30.f;
+        bubbleView.clipsToBounds = YES;
+        [bubbleView addGestureRecognizer:tapGestureRecognizer];
+
+    }
+    
+    
     //    [self.view addGestureRecognizer:tapGestureRecognizer];
     //    tapGestureRecognizer.delegate = self;
     
-    UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
     
-    UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap3:)];
-    
-    UITapGestureRecognizer *tapGestureRecognizer4 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap4:)];
-    
-    UITapGestureRecognizer *tapGestureRecognizer5 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap5:)];
-    
-    
-    _bubbleView = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 60, 60)];
-    _bubbleView.backgroundColor = [UIColor purpleColor];
-    [self.view addSubview:_bubbleView];
-    _bubbleView.layer.cornerRadius = 30.f;
-    _bubbleView.clipsToBounds = YES;
-    [_bubbleView addGestureRecognizer:tapGestureRecognizer];
-    
-
-    _bubbleView2 = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 60, 60)];
-    _bubbleView2.backgroundColor = [UIColor purpleColor];
-    [self.view addSubview:_bubbleView2];
-    _bubbleView2.layer.cornerRadius = 30.f;
-    _bubbleView2.clipsToBounds = YES;
-    [_bubbleView2 addGestureRecognizer:tapGestureRecognizer2];
-
-    _bubbleView3 = [[UIView alloc] initWithFrame:CGRectMake(200, 200, 60, 60)];
-    _bubbleView3.backgroundColor = [UIColor purpleColor];
-    [self.view addSubview:_bubbleView3];
-    _bubbleView3.layer.cornerRadius = 30.f;
-    _bubbleView3.clipsToBounds = YES;
-    [_bubbleView3 addGestureRecognizer:tapGestureRecognizer3];
-    
-    _bubbleView4 = [[UIView alloc] initWithFrame:CGRectMake(30, 200, 60, 60)];
-    _bubbleView4.backgroundColor = [UIColor purpleColor];
-    [self.view addSubview:_bubbleView4];
-    _bubbleView4.layer.cornerRadius = 30.f;
-    _bubbleView4.clipsToBounds = YES;
-    [_bubbleView4 addGestureRecognizer:tapGestureRecognizer4];
-    
-    _bubbleView5 = [[UIView alloc] initWithFrame:CGRectMake(180, 300, 60, 60)];
-    _bubbleView5.backgroundColor = [UIColor yellowColor];
-    [self.view addSubview:_bubbleView5];
-    _bubbleView5.layer.cornerRadius = 30.f;
-    _bubbleView5.clipsToBounds = YES;
-    _bubbleView5.layer.opacity = 0.5;
-    [_bubbleView5 addGestureRecognizer:tapGestureRecognizer5];
-    
-    _bubbleViews = [NSArray arrayWithObjects: _bubbleView, _bubbleView2, _bubbleView3, _bubbleView4, _bubbleView5, nil];
- 
 
     
     for (UIView *bubbleView in _bubbleViews)
@@ -140,8 +118,15 @@
 {
     if (sender.state == UIGestureRecognizerStateEnded)
     {
-        //for (UIView *bubbleView in _bubbleViews)
-        //{
+        UIView *tappedView;
+        for (UIView *bubbleView in _bubbleViews)
+        {
+            CGPoint touchPoint = [sender locationInView:bubbleView];
+            
+            if (CGRectContainsPoint(bubbleView.frame, touchPoint)) {
+                tappedView = bubbleView;
+            }
+        }
             CABasicAnimation* boundsAnim = [CABasicAnimation animationWithKeyPath:@"bounds"];
             boundsAnim.fromValue = [NSValue valueWithCGRect:_bubbleView.layer.bounds];
             boundsAnim.toValue = [NSValue valueWithCGRect:CGRectMake(20, 20, 70, 70)];
