@@ -33,22 +33,20 @@
     _bubbleView5 = [[UIView alloc] initWithFrame:CGRectMake(180, 300, 60, 60)];
     
     _bubbleViews = [NSArray arrayWithObjects:_bubbleView, _bubbleView2, _bubbleView3, _bubbleView4, _bubbleView5, nil];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear: animated];
     
-    for (UIView *bubbleView in _bubbleViews) {
+    for (UIView *someBubbleView in _bubbleViews) {
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         
-        
-        bubbleView.backgroundColor = [UIColor purpleColor];
-        [self.view addSubview:bubbleView];
-        bubbleView.layer.cornerRadius = 30.f;
-        bubbleView.clipsToBounds = YES;
-        [bubbleView addGestureRecognizer:tapGestureRecognizer];
+        someBubbleView.backgroundColor = [UIColor purpleColor];
+        [self.view addSubview:someBubbleView];
+        someBubbleView.layer.cornerRadius = 30.f;
+        someBubbleView.clipsToBounds = YES;
+        [someBubbleView addGestureRecognizer:tapGestureRecognizer];
 
     }
     
@@ -86,7 +84,7 @@
     {
         for (int i = 0; i < 5; i++)
         {
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(i * 3 + 27, 34, 3, 3)];
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(i * 6 + 27, 34, 3, 3)];
             view.backgroundColor = [UIColor redColor];
             [bubbleView addSubview:view];
             view.layer.cornerRadius = 1.5f;
@@ -95,9 +93,6 @@
             //[collisionBehavior addItem:view];
         }
     }
-
-    
-    
 }
 
 
@@ -119,107 +114,29 @@
     if (sender.state == UIGestureRecognizerStateEnded)
     {
         UIView *tappedView;
-        for (UIView *bubbleView in _bubbleViews)
+        for (UIView *someBubbleView in _bubbleViews)
         {
-            CGPoint touchPoint = [sender locationInView:bubbleView];
+            CGPoint touchPoint = [sender locationInView:self.view];
             
-            if (CGRectContainsPoint(bubbleView.frame, touchPoint)) {
-                tappedView = bubbleView;
+            if (CGRectContainsPoint(someBubbleView.frame, touchPoint))
+            {
+                tappedView = someBubbleView;
+                CABasicAnimation *boundsAnim = [CABasicAnimation animationWithKeyPath:@"bounds"];
+                boundsAnim.fromValue = [NSValue valueWithCGRect:tappedView.layer.bounds];
+                boundsAnim.toValue = [NSValue valueWithCGRect:CGRectMake(20, 20, 70, 70)];
+                boundsAnim.duration = 0.2;
+                [tappedView.layer addAnimation:boundsAnim forKey:@"bounds"];
+                
+                // Change the actual data value in the layer to the final value.
+                tappedView.layer.bounds = CGRectMake(20, 20, 0, 0);
+                NSLog(@"Pop! %@", tappedView);
+                self.view.backgroundColor = [UIColor redColor];
+
             }
         }
-            CABasicAnimation* boundsAnim = [CABasicAnimation animationWithKeyPath:@"bounds"];
-            boundsAnim.fromValue = [NSValue valueWithCGRect:_bubbleView.layer.bounds];
-            boundsAnim.toValue = [NSValue valueWithCGRect:CGRectMake(20, 20, 70, 70)];
-            boundsAnim.duration = 0.2;
-            [_bubbleView.layer addAnimation:boundsAnim forKey:@"bounds"];
-        
-        // Change the actual data value in the layer to the final value.
-        _bubbleView.layer.bounds = CGRectMake(20, 20, 0, 0);
-        NSLog(@"Pop!");
-        self.view.backgroundColor = [UIColor redColor];
-        //}
     }
 }
 
-- (void)handleTap2:(UITapGestureRecognizer *)sender
-{
-    if (sender.state == UIGestureRecognizerStateEnded)
-    {
-        //for (UIView *bubbleView in _bubbleViews)
-        //{
-        CABasicAnimation* boundsAnim = [CABasicAnimation animationWithKeyPath:@"bounds"];
-        boundsAnim.fromValue = [NSValue valueWithCGRect:_bubbleView2.layer.bounds];
-        boundsAnim.toValue = [NSValue valueWithCGRect:CGRectMake(20, 20, 70, 70)];
-        boundsAnim.duration = 0.2;
-        [_bubbleView2.layer addAnimation:boundsAnim forKey:@"bounds"];
-        
-        // Change the actual data value in the layer to the final value.
-        _bubbleView2.layer.bounds = CGRectMake(20, 20, 0, 0);
-        NSLog(@"Pop2!");
-        self.view.backgroundColor = [UIColor blueColor];
-        //}
-    }
-}
-
-- (void)handleTap3:(UITapGestureRecognizer *)sender
-{
-    if (sender.state == UIGestureRecognizerStateEnded)
-    {
-        //for (UIView *bubbleView in _bubbleViews)
-        //{
-        CABasicAnimation* boundsAnim = [CABasicAnimation animationWithKeyPath:@"bounds"];
-        boundsAnim.fromValue = [NSValue valueWithCGRect:_bubbleView3.layer.bounds];
-        boundsAnim.toValue = [NSValue valueWithCGRect:CGRectMake(20, 20, 70, 70)];
-        boundsAnim.duration = 0.2;
-        [_bubbleView3.layer addAnimation:boundsAnim forKey:@"bounds"];
-        
-        // Change the actual data value in the layer to the final value.
-        _bubbleView3.layer.bounds = CGRectMake(20, 20, 0, 0);
-        NSLog(@"Pop3!");
-        self.view.backgroundColor = [UIColor magentaColor];
-        //}
-    }
-}
-
-- (void)handleTap4:(UITapGestureRecognizer *)sender
-{
-    if (sender.state == UIGestureRecognizerStateEnded)
-    {
-        //for (UIView *bubbleView in _bubbleViews)
-        //{
-        CABasicAnimation* boundsAnim = [CABasicAnimation animationWithKeyPath:@"bounds"];
-        boundsAnim.fromValue = [NSValue valueWithCGRect:_bubbleView4.layer.bounds];
-        boundsAnim.toValue = [NSValue valueWithCGRect:CGRectMake(20, 20, 70, 70)];
-        boundsAnim.duration = 0.2;
-        [_bubbleView4.layer addAnimation:boundsAnim forKey:@"bounds"];
-        
-        // Change the actual data value in the layer to the final value.
-        _bubbleView4.layer.bounds = CGRectMake(20, 20, 0, 0);
-        NSLog(@"Pop4!");
-        self.view.backgroundColor = [UIColor cyanColor];
-        //}
-    }
-}
-
-- (void)handleTap5:(UITapGestureRecognizer *)sender
-{
-    if (sender.state == UIGestureRecognizerStateEnded)
-    {
-        //for (UIView *bubbleView in _bubbleViews)
-        //{
-        CABasicAnimation* boundsAnim = [CABasicAnimation animationWithKeyPath:@"bounds"];
-        boundsAnim.fromValue = [NSValue valueWithCGRect:_bubbleView5.layer.bounds];
-        boundsAnim.toValue = [NSValue valueWithCGRect:CGRectMake(20, 20, 70, 70)];
-        boundsAnim.duration = 0.2;
-        [_bubbleView5.layer addAnimation:boundsAnim forKey:@"bounds"];
-        
-        // Change the actual data value in the layer to the final value.
-        _bubbleView5.layer.bounds = CGRectMake(20, 20, 0, 0);
-        NSLog(@"Pop5!");
-        self.view.backgroundColor = [UIColor orangeColor];
-        //}
-    }
-}
 
 - (void)didReceiveMemoryWarning
 {
